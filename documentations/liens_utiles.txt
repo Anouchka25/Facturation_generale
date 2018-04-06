@@ -1,0 +1,3 @@
+HOW TO UPLOAD AND DISPLAY IMAGES AND TEXT TOGETHER USING PHP PDO.
+Liens utiles : https://coding.bramento.com/how-to-upload-and-display-images-and-text-together-using-php-pdo/
+http://makitweb.com/upload-multiple-image-files-to-the-database-using-pdo-php/

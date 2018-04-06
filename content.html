@@ -1,0 +1,84 @@
+<page backtop="20mm" backright="10mm" backbottom="20mm" backleft="10mm">
+<style type="text/css">
+<!--
+table{width: 100%; border-collapse:collapse; font-size:18px}
+.header td{width: 50%; vertical-align: top}
+.text-left{text-align: left}
+.text-right{text-align: right}
+.text-center{text-align: center}
+.separator{height: 50px; width: 100%}
+.content td{border:solid 1px #CFD1D2; padding: 5px;}
+.content th{border:solid 1px #000000; padding: 5px; background-color: #000000; color: #FFFFFF}
+.ligne1Content{background-color:#57B223}
+.couleurgris{background-color:#DDDDDD; height:auto;}
+.tht, .taxe, .ttc{font-size: 1.2em;}
+.ttc{color:#57B223}
+.couleurverte{background-color: #57B223}
+.couleurmoinsgris{background: #EEEEEE;}
+-->
+</style>
+
+      <table class="header">
+    <tr>
+      <td class="text-left">
+        Facturé à :<br/> <b>client 1</b>
+        <br>
+      </td>
+      <td class="text-right">
+        Facture de :<br/><b> facture de 1</b>
+        <br>
+      </td>
+    </tr>
+  </table>
+  <div class="separator"></div>
+<table>
+  <tr>
+  <td class="text-left">N° de facture: <b>num 1</b>  </td>
+  <td class="text-right">Date: <b>27/03/2018</b></td>
+  </tr>
+ </table>
+   <br/><br/>
+  <table class="content">
+    <thead>
+    <tr class="ligne1Content">
+      <td class="text-left couleurgris"><b>DESIGNATION</b></td>
+      <td class="text-center couleurmoinsgris"><b>QUANTITE</b></td>
+      <td class="text-center couleurgris"><b>PRIX HT</b></td>
+      <td class="text-right couleurverte"><b>TOTAL HT</b></td>
+    </tr>
+  </thead>
+  <tbody>
+          <tr class="couleurgris">
+      <td class="text-left couleurgris">designation 1</td>
+      <td class="text-center couleurmoinsgris">3</td>
+      <td class="text-center">200</td>
+      <td class="text-right couleurverte">600</td>
+  </tr>
+      <tr class="couleurgris">
+      <td class="text-left couleurgris">designation 2</td>
+      <td class="text-center couleurmoinsgris">5</td>
+      <td class="text-center">300</td>
+      <td class="text-right couleurverte">1500</td>
+  </tr>
+     </tbody>
+ <tfoot>
+   <tr>
+     <td colspan="3" class="text-right tht">TOTAL HT</td>
+     <td class="tht">2100</td>
+   </tr>
+   <tr>
+     <td colspan="3" class="text-right taxe">TAXE à 20% </td>
+     <td class="taxe">420</td>
+   </tr>
+   <tr>
+     <td colspan="3" class="text-right ttc">TOTAL TTC</td>
+     <td class="ttc">2520</td>
+   </tr>
+
+   <tr>
+     <td colspan="4"><h3>Conditions et moyens de paiement:</h3><br/>conditions 1</td>
+   </tr>
+
+ </tfoot>
+  </table>
+</page>
