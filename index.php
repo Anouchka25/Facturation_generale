@@ -66,8 +66,8 @@
             <input type="number" placeholder="Quantité" name="quantite[]" required>
             <input type="number" step="0.01" placeholder="Prix HT" name="prixht[]" required>
             <input name="taxe[]" type="text" step="0.01" placeholder="Taxe en %" required>
-            </div>
-            <button type="button" onclick="ajout(this);">+ Ajouter une designation</button>
+          </div><br/>
+            <button type="button" class="bouton" onclick="ajout(this);">+ Ajouter une designation</button>
             <!-- <input type="number" placeholder="Taxe" name="taxe"><br/><br/> -->
             <!-- <input type="number" placeholder="Total du montant HT" name="montantHT"><br/><br/> -->
             </fieldset>
