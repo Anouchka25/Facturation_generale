@@ -1,6 +1,0 @@
-{
-    "require": {
-        "doctrine/orm": "^2.5",
-        "spipu/html2pdf": "^5.1"
-    }
-}
