@@ -1,5 +1,4 @@
 <?php
-require_once 'connexion.php';
 date_default_timezone_set('Europe/Berlin');
 require_once dirname(__FILE__).'/vendor/autoload.php';
 require_once 'connexion.php';
@@ -24,15 +23,13 @@ $str = '
     .ttc{color:#57B223}
     .couleurverte{background-color: #57B223}
     .couleurmoinsgris{background: #EEEEEE;}
-    .taille1{width:30%;}
-    .taille2{width:15%;}
-    .taille3{width:25%; }
-    .taille4{width:20%;}
-    .taille5{width:10%;}
+    .taille1{width:40%; height:50px;}
+    .taille2{width:15%; height:50px}
+    .taille3{width:25%; height:50px;}
+    .taille4{width:20%; height:50px;}
     .header1{width:50%}
     .header2{width:50%}
     .tailleligne{height:200px}
-    .taille1, taille2, taille3, taille4, taille5{height:auto;}
     -->
     </style>
 ';
@@ -42,6 +39,7 @@ $resFC1->bindValue(1, $id, PDO::PARAM_INT);
 $resFC1->execute(array($_GET['num']));
 
 foreach ($resFC1 as $req){
+    $tva = $req['tva'];
     $conditions = $req['conditions'];
 
     $str .= '
@@ -63,16 +61,8 @@ foreach ($resFC1 as $req){
             <tr>
                 <td class="text-left header1">N° de facture: <b>'.$req['num'].'</b>  </td>
                 <td class="text-right header2">Date: <b>'.$req['datefacture'].'</b></td>
-           </tr>      
+            </tr>
         </table>
-
-        <br/>
-      <table>
-          <tr>
-             <td class="text-left header1"></td>
-             <td class="text-right header1">N° TVA intracommunautaire: <b>'.$req['numtva'].'</b>  </td>
-          </tr>
-      </table>
     ';
 }
 
@@ -84,64 +74,49 @@ $str .= '
         <td class="text-left couleurgris taille1"><b>DESIGNATION</b></td>
         <td class="text-center couleurmoinsgris taille2"><b>QUANTITE</b></td>
         <td class="text-center couleurgris taille3"><b>PRIX HT</b></td>
-        <td class="text-center couleurgris taille5"><b>TAXE</b></td>
         <td class="text-center couleurverte taille4"><b>TOTAL HT</b></td>
     </tr>
     </thead>
     <tbody>
 ';
 
-$resFC = $base->prepare('SELECT infosfacture.num, infosfacture.client, infosfacture.datefacture, infosfacture.facturede, infosfacture.conditions, facturation.designation, facturation.quantite, facturation.prixht, facturation.taxe
+$resFC = $base->prepare('SELECT infosfacture.num, infosfacture.client, infosfacture.datefacture, infosfacture.facturede, infosfacture.conditions, facturation.designation, facturation.quantite, facturation.prixht
     FROM infosfacture
     INNER JOIN facturation
     ON infosfacture.num=? AND facturation.fk_facturation_id=infosfacture.id');
 $resFC->execute(array($_GET['num']));
 
-$resultat= $resFC->fetchAll();
-
 $somme = 0;
-foreach ($resultat as $req):
+foreach ($resFC as $req){
+    $somme += $req['prixht'] * $req['quantite'];
     $str .= '
         <tr class="couleurgris">
           <td class="text-left couleurgris taille1">'.$req['designation'].'</td>
           <td class="text-center couleurmoinsgris taille2">'.$req['quantite'].'</td>
           <td class="text-center taille3">'.$req['prixht'].'</td>
-          <td class="text-center taille5">'.$req['taxe'].'</td>
           <td class="text-center couleurverte taille4">'.($req['quantite'] * $req['prixht']).'</td>
         </tr>
     ';
-$sommeht += $req['prixht'] * $req['quantite'];
-endforeach;
+}
 
 $str .= '
     </tbody>
     <tfoot>
         <tr>
-        <td colspan="4" class="text-right tht">TOTAL HT</td>
-        <td class="tht text-center">'.$sommeht.'</td>
-        </tr>';
-        $sommetaxe = 0;
-        foreach ($resultat as $req):
-          $prixtotalht=$req['prixht'] * $req['quantite'];
-          $prixtaxe=$prixtotalht * $req['taxe']/100;
-      $str .= '
-      <tr>
-          <td colspan="4" class="text-right tht">TAXE à '.$req['taxe'].' % </td>
-          <td class="text-center">'.$prixtaxe.' </td>
-      </tr>
-      ';
-
-        $sommetaxe += $prixtaxe ;
-        endforeach;
-
-        $str .= '
+        <td colspan="3" class="text-right tht">TOTAL HT</td>
+        <td class="tht text-center">'.$somme.'</td>
+        </tr>
         <tr>
-          <td colspan="4" class="text-right tht">TOTAL TTC</td>
-          <td class="text-center">'.($sommeht + $sommetaxe).'</td>
+        <td colspan="3" class="text-right taxe">TAXE à '.$tva.' % </td>
+        <td class="taxe text-center">'.($somme * $tva/100).'</td>
+        </tr>
+        <tr>
+        <td colspan="3" class="text-right ttc"><b>TOTAL TTC</b></td>
+        <td class="ttc text-center"><b>'.($somme + $somme*$tva/100).'</b></td>
         </tr>
 
         <tr>
-        <td colspan="5"><h3>Conditions et moyens de paiement:</h3><br/>'.$conditions.'</td>
+        <td colspan="4"><h3>Conditions et moyens de paiement:</h3><br/>'.$conditions.'</td>
         </tr>
     </tfoot>
     </table>

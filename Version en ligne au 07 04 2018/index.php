@@ -30,9 +30,7 @@
 
   <fieldset>
     <legend><i class="fas fa-file-alt" style="color:#57B223">&nbsp</i>Infos de base</legend><br/>
-    <i class="fab fa-envira" style="color:#57B223"></i>&nbsp<label>Numéro de la facture *</label><br/>
-    <input type="text" placeholder="Numéro de la TVA" name="numtva" ><br/><br/>
-    <i class="fas fa-key" style="color:#57B223"></i>&nbsp<label>Numéro de la TVA *</label><br/>
+    <i class="fas fa-key" style="color:#57B223"></i>&nbsp<label>Numéro de la facture *</label><br/>
     <input type="text" placeholder="Numéro de la facture" name="num" required><br/><br/>
     <i class="fas fa-clock" style="color:#57B223"></i>&nbsp<label>Date de la facture *</label>
     <input type="text" placeholder="15/03/2018" name="datefacture" required><br/><br/>
@@ -65,7 +63,6 @@
               placeholder="Designation" required></textarea>
             <input type="number" placeholder="Quantité" name="quantite[]" required>
             <input type="number" step="0.01" placeholder="Prix HT" name="prixht[]" required>
-            <input name="taxe[]" type="text" step="0.01" placeholder="Taxe en %" required>
             </div>
             <button type="button" onclick="ajout(this);">+ Ajouter une designation</button>
             <!-- <input type="number" placeholder="Taxe" name="taxe"><br/><br/> -->
@@ -73,10 +70,10 @@
             </fieldset>
 <br/>
 
-<!-- <fieldset><legend><i class="fas fa-shopping-basket" style="color:#57B223"></i>&nbsp TVA *</legend>
+<fieldset><legend><i class="fas fa-shopping-basket" style="color:#57B223"></i>&nbsp TVA *</legend>
   <label> Choisissez votre TVA en % * :</label>
   <input type="text" step="0.01" placeholder="19.19" name="tva" required>
-   <input type="radio" id="tva"
+  <!-- <input type="radio" id="tva"
        name="tva" value="20" checked>
   <label>20%</label>
   <input type="radio" id="tva"
@@ -90,9 +87,9 @@
   <label>2,1%</label>
   <input type="radio" id="tva"
        name="tva" value="Pas de TVA">
-  <label>Pas de TVA</label>
+  <label>Pas de TVA</label> -->
 
-</fieldset> -->
+</fieldset>
 <br/><br/>
     <center><input type="submit" value ="Créer une facture" class="bouton" /></center>
       </form>
