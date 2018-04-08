@@ -211,7 +211,7 @@ footer {
   width: 100%;
   height: 30px;
   position: absolute;
-  bottom: 20px;
+  bottom: 10;
   border-top: 1px solid #AAAAAA;
   padding: 8px 0;
   text-align: center;
@@ -259,3 +259,12 @@ ul li a:hover {
         height: 50px;}
 
 .slogan{color:#57B223; font-size: 20px;}
+
+.boutonAjout {
+border-radius:7px;
+width:200px;
+height: 50px;
+Font-Weight: Bold;}
+
+.boutonAjout:hover{background-color:#29245C;
+color: white;}

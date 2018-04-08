@@ -31,9 +31,11 @@
   <fieldset>
     <legend><i class="fas fa-file-alt" style="color:#57B223">&nbsp</i>Infos de base</legend><br/>
     <i class="fab fa-envira" style="color:#57B223"></i>&nbsp<label>Numéro de la facture *</label><br/>
-    <input type="text" placeholder="Numéro de la TVA" name="numtva" ><br/><br/>
+    <input type="text" placeholder="TOUT100503" name="num" ><br/><br/>
+
     <i class="fas fa-key" style="color:#57B223"></i>&nbsp<label>Numéro de la TVA *</label><br/>
-    <input type="text" placeholder="Numéro de la facture" name="num" required><br/><br/>
+    <input type="text" placeholder="FR39831670831" name="numtva" required><br/><br/>
+
     <i class="fas fa-clock" style="color:#57B223"></i>&nbsp<label>Date de la facture *</label>
     <input type="text" placeholder="15/03/2018" name="datefacture" required><br/><br/>
 
@@ -67,7 +69,7 @@
             <input type="number" step="0.01" placeholder="Prix HT" name="prixht[]" required>
             <input name="taxe[]" type="text" step="0.01" placeholder="Taxe en %" required>
           </div><br/>
-            <button type="button" onclick="ajout(this);">+ Ajouter une designation</button>
+            <button type="button" class="boutonAjout" onclick="ajout(this);">+ Ajouter une designation</button>
             <!-- <input type="number" placeholder="Taxe" name="taxe"><br/><br/> -->
             <!-- <input type="number" placeholder="Total du montant HT" name="montantHT"><br/><br/> -->
             </fieldset>
