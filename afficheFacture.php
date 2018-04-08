@@ -122,7 +122,7 @@ foreach ($_POST['designation'] as $key => $designation) {
     </tr>
   </thead>
   <tbody>
-    <?php $somme = 0;?>
+    <?php $sommeht = 0;?>
     <?php foreach ($facturation as $presta): ?>
     <tr>
         <td class="desc"><?= $presta['designation'] ?></td>
@@ -131,26 +131,31 @@ foreach ($_POST['designation'] as $key => $designation) {
         <td class="unit"><?= $presta['taxe'] ?></td>
         <td class="total"><?= $presta['prixht'] * $presta['quantite'] ?></td>
       </tr>
-      <?php $somme += $presta['prixht'] * $presta['quantite']; ?>
+      <?php $sommeht += $presta['prixht'] * $presta['quantite']; ?>
     <?php endforeach; ?>
   </tbody>
   <tfoot>
     <tr>
       <td colspan="4">TOTAL HT</td>
-      <td><?= $somme; ?></td>
+      <td><?= $sommeht; ?></td>
     </tr>
 
     <?php $sommetaxe = 0;?>
     <?php foreach ($facturation as $presta): ?>
+      <?php
+      $prixtotalht=$presta['prixht'] * $presta['quantite']; //Prix HT d'une designation
+      $valeurtaxe= $presta['taxe']/100; //Valeur decimale de la taxe ex:20% ==> 0,2
+      $prixtaxe=$prixtotalht * $valeurtaxe; //Valeur de la taxe à payer
+      ?>
     <tr>
       <td colspan="4">TAXE à <?= $presta['taxe'] ?>% </td>
-      <td><?= $presta['prixht'] * $presta['quantite'] * $presta['taxe']/100 ?></td>
+      <td><?= $prixtaxe ?></td>
     </tr>
-    <?php $sommetaxe += $presta['prixht'] * $presta['quantite'] * $presta['taxe']/100 ; ?>
+    <?php $sommetaxe += $prixtaxe ; ?>
     <?php endforeach; ?>
     <tr>
       <td colspan="4">TOTAL TTC</td>
-      <td><?= $somme + $sommetaxe ; ?></td>
+      <td><?= $sommeht + $sommetaxe ; ?></td>
     </tr>
   </tfoot>
 </table>

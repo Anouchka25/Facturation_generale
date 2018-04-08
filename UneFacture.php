@@ -57,11 +57,11 @@ $resultat= $resFC->fetchAll();
       <table border="0" cellspacing="0" cellpadding="0">
         <thead>
           <tr>
-            <th class="desc">DESIGNATION</th>
-            <th class="qty">QUANTITÉ</th>
-            <th class="unit">PRIX HT</th>
-            <th class="unit">TAXE</th>
-            <th class="total">TOTAL HT</th>
+            <th class="desc"><b>DESIGNATION</b></th>
+            <th class="qty"><b>QUANTITÉ</b></th>
+            <th class="unit"><b>PRIX HT</b></th>
+            <th class="unit"><b>TAXE</b></th>
+            <th class="total"><b>TOTAL HT</b></th>
           </tr>
         </thead>
         <tbody>
@@ -90,15 +90,15 @@ $resultat= $resFC->fetchAll();
           <?php foreach ($resultat as $uneFacture): ?>
 
             <?php
-            $prixtotalht=$uneFacture['prixht'] * $uneFacture['quantite'];
-            $valeurtaxe= $uneFacture['taxe']/100;
-            $prixtaxe=$prixtotalht * $valeurtaxe;
+            $prixtotalht=$uneFacture['prixht'] * $uneFacture['quantite']; //Prix HT d'une designation
+            $valeurtaxe= $uneFacture['taxe']/100; //Valeur decimale de la taxe ex:20% ==> 0,2
+            $prixtaxe=$prixtotalht * $valeurtaxe; //Valeur de la taxe à payer
             ?>
           <tr>
             <td colspan="4">TAXE à <?= $uneFacture['taxe'] ?> % </td>
-            <td><?= $uneFacture['prixht'] * $uneFacture['quantite']  ?></td>
+            <td><?= $prixtaxe  ?></td>
           </tr>
-          <?php $sommetaxe += $prixtotalht ; ?>
+          <?php $sommetaxe += $prixtaxe ; ?>
           <?php endforeach; ?>
           <tr>
             <td colspan="4">TOTAL TTC</td>

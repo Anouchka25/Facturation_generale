@@ -67,33 +67,11 @@
             <input type="number" step="0.01" placeholder="Prix HT" name="prixht[]" required>
             <input name="taxe[]" type="text" step="0.01" placeholder="Taxe en %" required>
           </div><br/>
-            <button type="button" class="bouton" onclick="ajout(this);">+ Ajouter une designation</button>
+            <button type="button" onclick="ajout(this);">+ Ajouter une designation</button>
             <!-- <input type="number" placeholder="Taxe" name="taxe"><br/><br/> -->
             <!-- <input type="number" placeholder="Total du montant HT" name="montantHT"><br/><br/> -->
             </fieldset>
-<br/>
-
-<!-- <fieldset><legend><i class="fas fa-shopping-basket" style="color:#57B223"></i>&nbsp TVA *</legend>
-  <label> Choisissez votre TVA en % * :</label>
-  <input type="text" step="0.01" placeholder="19.19" name="tva" required>
-   <input type="radio" id="tva"
-       name="tva" value="20" checked>
-  <label>20%</label>
-  <input type="radio" id="tva"
-       name="tva" value="10">
-  <label>10%</label>
-  <input type="radio" id="tva"
-       name="tva" value="5,5">
-  <label>5,5%</label>
-  <input type="radio" id="tva"
-       name="tva" value="2,1">
-  <label>2,1%</label>
-  <input type="radio" id="tva"
-       name="tva" value="Pas de TVA">
-  <label>Pas de TVA</label>
-
-</fieldset> -->
-<br/><br/>
+            <br/><br/>
     <center><input type="submit" value ="Créer une facture" class="bouton" /></center>
       </form>
       <br/>
@@ -101,5 +79,6 @@
       <?php require_once('includes/footer.php') ?>
 
 <script src="js/fonctions.js"></script>
+
   </body>
 </html>
