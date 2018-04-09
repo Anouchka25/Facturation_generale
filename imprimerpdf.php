@@ -41,20 +41,22 @@ $resFC1=$base->prepare("SELECT * FROM infosfacture WHERE num= ?");
 $resFC1->bindValue(1, $id, PDO::PARAM_INT);
 $resFC1->execute(array($_GET['num']));
 
-foreach ($resFC1 as $req){
-    $conditions = $req['conditions'];
+$resultat1= $resFC1->fetch();
+
+foreach ($resultat1 as $req){
+    //$conditions = $req['conditions'];
 
     $str .= '
         <table class="header">
             <tr>
                 <td class="text-left"></td>
-                <td class="text-right">Facture de :<br/><b>'.$req['facturede'].'</b><br></td>
+                <td class="text-right"><b>'.$req['facturede'].'</b><br></td>
             </tr>
         </table>
         <div class="separator"></div>
         <table class="header">
             <tr>
-                <td class="text-left">Facturé à :<br/> <b>'.$req['client'].'</b><br></td>
+                <td class="text-left"><b>'.$req['client'].'</b><br></td>
                 <td class="text-right"></td>
             </tr>
         </table>
@@ -63,18 +65,11 @@ foreach ($resFC1 as $req){
             <tr>
                 <td class="text-left header1">N° de facture: <b>'.$req['num'].'</b>  </td>
                 <td class="text-right header2">Date: <b>'.$req['datefacture'].'</b></td>
-           </tr>      
+           </tr>
         </table>
 
-        <br/>
-      <table>
-          <tr>
-             <td class="text-left header1"></td>
-             <td class="text-right header1">N° TVA intracommunautaire: <b>'.$req['numtva'].'</b>  </td>
-          </tr>
-      </table>
     ';
-}
+//}
 
 $str .= '
     <br/><br/>
@@ -141,12 +136,13 @@ $str .= '
         </tr>
 
         <tr>
-        <td colspan="5"><h3>Conditions et moyens de paiement:</h3><br/>'.$conditions.'</td>
+        <td colspan="5"><h3>Conditions et moyens de paiement:</h3><br/>'.$req['conditions'].'</td>
         </tr>
     </tfoot>
     </table>
-    </page>
-';
+    ';
+    }
+    $str .= ' </page> ';
 
 /*
  * On instancie notre constructeur
