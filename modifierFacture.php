@@ -5,7 +5,7 @@ $resFC1=$base->prepare("SELECT * FROM infosfacture WHERE id= ?");
 $resFC1->bindValue(1, $id, PDO::PARAM_INT);
 $resFC1->execute(array($_GET['id']));
 
-$resFC = $base->prepare("SELECT infosfacture.num, infosfacture.client, infosfacture.datefacture, infosfacture.facturede, infosfacture.conditions, facturation.designation, facturation.quantite, facturation.prixht
+$resFC = $base->prepare("SELECT infosfacture.num, infosfacture.numtva, infosfacture.client, infosfacture.datefacture, infosfacture.facturede, infosfacture.conditions, infosfacture.id_membre, facturation.designation, facturation.quantite, facturation.prixht,facturation.taxe, facturation.fk_facturation_id
 FROM infosfacture
 INNER JOIN facturation
 ON infosfacture.id=? AND facturation.fk_facturation_id=infosfacture.id");
@@ -22,22 +22,27 @@ $resFC->execute(array($_GET['id']));
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
   </head>
   <body>
-    <?php
-  session_start();
-  if (isset($_SESSION['id_membre']) AND isset($_SESSION['pseudo']))
-{ ?>
+
     <br/><br/>
     <main>
+
 <?php require_once('includes/menu.php') ?>
 <br/><br/><br/>
+<?php
+session_start();
+if (isset($_SESSION['id_membre']) AND isset($_SESSION['pseudo']))
+{ ?>
 <?php foreach ($resFC1 as $req): ?>
 <?= '<form action="updateFacture.php?id='.$req['id'].'" method="post">' ?>
 <fieldset>
     <legend><i class="fas fa-file-alt" style="color:#57B223">&nbsp</i>Infos de base</legend>
-    <i class="fas fa-key" style="color:#57B223"></i>&nbsp<label>Numéro de la facture *</label><br/>
-    <input type="text" placeholder="Numéro de la facture" name="num" value="<?php echo $req['num'] ?>" required><br/><br/>
+    <i class="fab fa-envira" style="color:#57B223"></i>&nbsp<label>Numéro de la facture *</label><br/>
+    <input type="text" placeholder="TOUT100503" name="num" value="<?php echo $req['num'] ?>"><br/><br/>
+    <i class="fas fa-key" style="color:#57B223"></i>&nbsp
+    <label>Numéro de la TVA </label><br/>
+    <input type="text" placeholder="FR39831670831" name="numtva" value="<?php echo $req['numtva'] ?>"><br/><br/>
     <i class="fas fa-clock" style="color:#57B223"></i>&nbsp<label>Date de la facture *</label>
-    <input type="text" placeholder="15/03/2018" name="datefacture" value="<?php echo $req['datefacture'] ?>" required><br/><br/>
+    <input type="date" name="datefacture" value="<?php echo $req['datefacture'] ?>" required><br/><br/>
 
     <i class="fas fa-user" style="color:#57B223"></i></i>&nbsp<label>Infos de votre entreprise *</label><br/>
     <textarea id="facturede" name="facturede" rows="4" cols="45"
@@ -62,35 +67,22 @@ $resFC->execute(array($_GET['id']));
               placeholder="Designation" required><?php echo $req['designation'] ?></textarea>
             <input type="number" placeholder="Quantité" name="quantite[]" value="<?php echo $req['quantite'] ?>" required>
             <input type="number" step="0.01" placeholder="Prix HT" name="prixht[]" value="<?php echo $req['prixht'] ?>" required>
+            <input name="taxe[]" type="text" step="0.01" placeholder="Taxe en %" value="<?php echo $req['taxe'] ?>" required>
             </div>
             <?php endforeach; ?>
-            <button type="button" onclick="ajout(this);">+ Ajouter une designation</button>
+            <br/>
+            <button type="button" class="boutonAjout" onclick="ajout(this);">+ Ajouter une designation</button>
             </fieldset>
-<br/>
-<fieldset><legend><i class="fas fa-shopping-basket" style="color:#57B223"></i>&nbsp TVA *</legend>
-  <label>Choisissez votre TVA en % * :</label>
-  <input type="number" step="0.01" placeholder="19.19" name="tva" value="<?php echo $tva ?>" required>
-  <!-- <input type="radio" id="tva"
-       name="tva" value="20" checked>
-  <label>20%</label>
-  <input type="radio" id="tva"
-       name="tva" value="10">
-  <label>10%</label>
-  <input type="radio" id="tva"
-       name="tva" value="5,5">
-  <label>5,5%</label>
-  <input type="radio" id="tva"
-       name="tva" value="2,1">
-  <label>2,1%</label>
-  <input type="radio" id="tva"
-       name="tva" value="Pas de TVA">
-  <label>Pas de TVA</label> -->
-
-</fieldset>
 <br/><br/>
-    <center><input type="submit" value ="Mettre à jour une facture" class="bouton" /></center>
+    <center><input type="submit" value ="Mettre à jour la facture" class="bouton" /></center>
       </form>
       <br/>
+      <?php
+      }
+      else {
+      include('seconnecter.php');
+       }
+       ?>
     </main>
       <?php require_once('includes/footer.php') ?>
   <script src="js/fonctions.js"></script>

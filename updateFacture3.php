@@ -41,36 +41,25 @@
         facturede = :facturede,
         conditions = :conditions,
         id_membre= :id_membre
-        WHERE id= :id');
+        WHERE id= ?');
+        $req1->bindParam(':num', $_POST['num'], PDO::PARAM_STR);
+        $req1->bindParam(':numtva', $_POST['numtva'], PDO::PARAM_STR);
+        $req1->bindParam(':client', $_POST['client'], PDO::PARAM_STR);
+        $req1->bindParam(':datefacture', $_POST['datefacture'], PDO::PARAM_STR);
+        $req1->bindParam(':facturede', $_POST['facturede'], PDO::PARAM_STR);
+        $req1->bindParam(':conditions', $_POST['conditions'], PDO::PARAM_STR);
+        $req1->bindParam(':id_membre', $_SESSION['id_membre'], PDO::PARAM_INT);
+        $req1->execute();
 
         $req2 = $base->prepare('UPDATE facturation
                                 SET  designation = :designation,
                                 quantite = :quantite,
                                 prixht = :prixht
-                                WHERE fk_facturation_id=:fk_facturation_id');
-
-        $param = array();
-        $params[':num']    = $_POST['num'];
-        $params[':numtva']    = $_POST['numtva'];
-        $params[':client']    = $_POST['client'];
-        $params[':datefacture'] = $_POST['datefacture'];
-        $params[':facturede'] = $_POST['facturede'];
-        $params[':conditions'] = $_POST['conditions'];
-        $params[':id_membre'] = $id_membre;
-        $req1->execute($params)
-
-        $fk_facturation_id = $base->lastInsertId();
-
-      $params = array();
-      $params[':fk_facturation_id'] = $fk_facturation_id;
-
-      foreach ($_POST['designation'] as $key => $designation) {
-            $params[':designation'] = $designation;
-            $params[':quantite']    = $_POST['quantite'][$key];
-            $params[':prixht']  = $_POST['prixht'][$key];
-            $params[':taxe'] = $_POST['taxe'][$key];
-            $req2->execute($params);
-        }
+                                WHERE fk_facturation_id= ?');
+        $req2->bindParam(':designation', $_POST['designation'], PDO::PARAM_STR);
+        $req2->bindParam(':quantite', $_POST['quantite'], PDO::PARAM_STR);
+        $req2->bindParam(':prixht', $_POST['prixht'], PDO::PARAM_STR);
+        $req2->execute();
 
     echo 'La facture n° '.$num.' a bien été mise à jour ';
     // echo "<script language=\"javascript\">";

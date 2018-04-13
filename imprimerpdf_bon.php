@@ -35,7 +35,6 @@ $str = '
     .taille1, taille2, taille3, taille4, taille5{height:auto;}
 	span{font-size:14px; font-weight:bold; color:#57B223;}
 	h1, h2, h3{color:#57B223;}
-  .colorwhite{color:white}
     -->
     </style>
 ';
@@ -46,8 +45,6 @@ $resFC1->execute(array($_GET['num']));
 
 $resultat1= $resFC1->fetch(PDO::FETCH_ASSOC);
 
-$datelafacture= date('d/m/Y',strtotime($resultat1['datefacture']));
-
 
     $str .= '
         <table class="header">
@@ -57,7 +54,7 @@ $datelafacture= date('d/m/Y',strtotime($resultat1['datefacture']));
 
             <tr>
                 <td class="text-left"><span>De</span><br/><br/>'.$resultat1['facturede'].'<br></td>
-				<td class="text-right"><span>N° de facture:</span> '.$resultat1['num'].'<br/><br/><span>Date: </span>'.$datelafacture.'<br/><br/><span>N° TVA:</span> '.$resultat1['numtva'].'</td>
+				<td class="text-right"><span>N° de facture:</span> '.$resultat1['num'].'<br/><br/><span>Date: </span>'.$resultat1['datefacture'].'<br/><br/><span>N° TVA:</span> '.$resultat1['numtva'].'</td>
             </tr>
 
 			<tr>
@@ -78,7 +75,7 @@ $str .= '
         <td class="text-center couleurmoinsgris taille2"><b>QUANTITE</b></td>
         <td class="text-center couleurgris taille3"><b>PRIX HT</b></td>
         <td class="text-center couleurgris taille5"><b>TAXE</b></td>
-        <td class="text-center couleurverte taille4 colorwhite"><b>TOTAL HT</b></td>
+        <td class="text-center couleurverte taille4"><b>TOTAL HT</b></td>
     </tr>
     </thead>
     <tbody>
@@ -99,8 +96,8 @@ foreach ($resultat as $req):
           <td class="text-left couleurgris taille1">'.$req['designation'].'</td>
           <td class="text-center couleurmoinsgris taille2">'.$req['quantite'].'</td>
           <td class="text-center taille3">'.$req['prixht'].'€</td>
-          <td class="text-center taille5">'.$req['taxe'].'%</td>
-          <td class="text-center couleurverte taille4 colorwhite">'.($req['quantite'] * $req['prixht']).'€</td>
+          <td class="text-center taille5">'.$req['taxe'].'</td>
+          <td class="text-center couleurverte taille4">'.($req['quantite'] * $req['prixht']).'€</td>
         </tr>
     ';
 $sommeht += $req['prixht'] * $req['quantite'];
@@ -129,7 +126,7 @@ $str .= '
 
         $str .= '
         <tr>
-          <td colspan="4" class="text-right"><h3>TOTAL TTC À PAYER</h3></td>
+          <td colspan="4" class="text-right"><h3>TOTAL TTC A PAYER</h3></td>
           <td class="text-center"><h3>'.($sommeht + $sommetaxe).'€</h3></td>
         </tr>
 

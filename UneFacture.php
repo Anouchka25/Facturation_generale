@@ -1,5 +1,6 @@
 <?php
 require_once 'connexion.php';
+date_default_timezone_set('Europe/Berlin');
 
 $resFC1=$base->prepare("SELECT * FROM infosfacture WHERE id= ?");
 $resFC1->bindValue(1, $id, PDO::PARAM_INT);
@@ -34,24 +35,29 @@ $resultat= $resFC->fetchAll();
     <?php foreach ($resFC1 as $uneFacture1): ?>
     <header class="clearfix">
       <div id="logo">
-        <img src="logo.png">
+        <a href="index.php">
+      <figure>
+        <img src="logo.png" title="Imprimer votre facture" width="70px">
+            <figcaption class="slogan">Facturation simple et gratuite</figcaption>
+      </figure>
+      </a>
       </div>
       <div id="company">
-      <div class="to"><h2></h2> <?php echo $uneFacture1['facturede'] ?></div>
+      <div class="to"> <?php echo $uneFacture1['facturede'] ?></div>
       </div>
 
     </header>
     <main>
       <div id="details" class="clearfix">
         <div id="client">
-          <div class="to"><h3><?= $uneFacture1['client'] ?></h3></div>
+          <div class="to"><?= $uneFacture1['client'] ?></div>&nbsp
         </div>
         <div id="invoice">
-          <h3>FACTURE N°:  <?= $uneFacture1['num'] ?></h3>
-          <div class="date"><h3> Date: <?= $uneFacture1['datefacture'] ?></h3></div>
+          <span>FACTURE N°:</span>  <?= $uneFacture1['num'] ?>&nbsp<br/>
+		  <span> DATE: </span><?php echo date('d/m/Y',strtotime($uneFacture1['datefacture']));  ?> &nbsp
+		  <br/><span> N° TVA:&nbsp </span><?= $uneFacture1['numtva'] ?>&nbsp
         </div>
       </div>
-      <div><h3>N° TVA intracommunautaire:&nbsp<?= $uneFacture1['numtva'] ?></h3> </div>
       <?php $identifiant = $uneFacture1['id']; ?>
       <?php endforeach; ?>
       <table border="0" cellspacing="0" cellpadding="0">
@@ -60,7 +66,7 @@ $resultat= $resFC->fetchAll();
             <th class="desc"><b>DESIGNATION</b></th>
             <th class="qty"><b>QUANTITÉ</b></th>
             <th class="unit"><b>PRIX HT</b></th>
-            <th class="unit"><b>TAXE</b></th>
+            <th class="qty"><b>TAXE</b></th>
             <th class="total"><b>TOTAL HT</b></th>
           </tr>
         </thead>
@@ -73,9 +79,9 @@ $resultat= $resFC->fetchAll();
 
             <td class="desc"><?= $uneFacture['designation'] ?></td>
             <td class="qty"><?= $uneFacture['quantite'] ?></td>
-            <td class="unit"><?= $uneFacture['prixht'] ?></td>
-            <td class="unit"><?= $uneFacture['taxe'] ?></td>
-            <td class="total"><?= $uneFacture['prixht'] * $uneFacture['quantite'] ?></td>
+            <td class="unit"><?= $uneFacture['prixht'] ?>€</td>
+            <td class="qty"><?= $uneFacture['taxe'] ?>%</td>
+            <td class="total"><?= $uneFacture['prixht'] * $uneFacture['quantite'] ?>€</td>
           </tr>
           <?php $sommeht += $uneFacture['prixht'] * $uneFacture['quantite']; ?>
           <?php endforeach; ?>
@@ -95,14 +101,14 @@ $resultat= $resFC->fetchAll();
             $prixtaxe=$prixtotalht * $valeurtaxe; //Valeur de la taxe à payer
             ?>
           <tr>
-            <td colspan="4">TAXE à <?= $uneFacture['taxe'] ?> % </td>
-            <td><?= $prixtaxe  ?></td>
+            <td colspan="4">TAXE À <?= $uneFacture['taxe'] ?> % </td>
+            <td><?= $prixtaxe  ?>€</td>
           </tr>
           <?php $sommetaxe += $prixtaxe ; ?>
           <?php endforeach; ?>
           <tr>
-            <td colspan="4">TOTAL TTC</td>
-            <td><?= $sommeht + $sommetaxe ; ?></td>
+            <td colspan="4">TOTAL TTC À PAYER</td>
+            <td><?= $sommeht + $sommetaxe ; ?>€</td>
           </tr>
         </tfoot>
       </table>

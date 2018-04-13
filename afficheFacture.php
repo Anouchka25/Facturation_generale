@@ -80,6 +80,9 @@ foreach ($_POST['designation'] as $key => $designation) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
   </head>
   <body>
+	<br/>
+    <?php require_once('includes/menu.php') ?>
+    <br/><br/>
     <header class="clearfix">
       <div id="logo">
         <a href="index.php">
@@ -90,18 +93,17 @@ foreach ($_POST['designation'] as $key => $designation) {
       </a>
       </div>
       <div id="company">
-      <div class="to"><h2>De:</h2> <?php echo $facturede ?></div>
+      <div class="to"><?php echo $facturede ?></div>
       </div>
     </header>
     <main>
-      <?php require_once('includes/menu.php') ?>
-      <br/><br/><br/>
+
       <div id="details" class="clearfix">
         <div id="client">
-          <div class="to"><h2>Facture à:</h2><?php echo $client ?></div>
+          <div class="to"><?php echo $client ?></div>
         </div>
         <div id="invoice">
-          <h2>FACTURE N° <?php echo $num ?></h2>
+          <span>FACTURE N°:</span> <?php echo $num ?>
           <div class="date">Date: <?php echo $datefacture ?></div>
         </div>
       </div>
@@ -117,7 +119,7 @@ foreach ($_POST['designation'] as $key => $designation) {
       <th class="desc">DESIGNATION</th>
       <th class="qty">QUANTITÉ</th>
       <th class="unit">PRIX HT</th>
-      <th class="unit">TAXE</th>
+      <th class="qty">TAXE</th>
       <th class="total">Total HT</th>
     </tr>
   </thead>
@@ -127,9 +129,9 @@ foreach ($_POST['designation'] as $key => $designation) {
     <tr>
         <td class="desc"><?= $presta['designation'] ?></td>
         <td class="qty"><?= $presta['quantite'] ?></td>
-        <td class="unit"><?= $presta['prixht'] ?></td>
-        <td class="unit"><?= $presta['taxe'] ?></td>
-        <td class="total"><?= $presta['prixht'] * $presta['quantite'] ?></td>
+        <td class="unit"><?= $presta['prixht'] ?>€</td>
+        <td class="qty"><?= $presta['taxe'] ?>%</td>
+        <td class="total"><?= $presta['prixht'] * $presta['quantite'] ?>€</td>
       </tr>
       <?php $sommeht += $presta['prixht'] * $presta['quantite']; ?>
     <?php endforeach; ?>
@@ -148,14 +150,14 @@ foreach ($_POST['designation'] as $key => $designation) {
       $prixtaxe=$prixtotalht * $valeurtaxe; //Valeur de la taxe à payer
       ?>
     <tr>
-      <td colspan="4">TAXE à <?= $presta['taxe'] ?>% </td>
+      <td colspan="4">TAXE À <?= $presta['taxe'] ?>% </td>
       <td><?= $prixtaxe ?></td>
     </tr>
     <?php $sommetaxe += $prixtaxe ; ?>
     <?php endforeach; ?>
     <tr>
-      <td colspan="4">TOTAL TTC</td>
-      <td><?= $sommeht + $sommetaxe ; ?></td>
+      <td colspan="4">TOTAL TTC À PAYER</td>
+      <td><?= $sommeht + $sommetaxe ; ?>€</td>
     </tr>
   </tfoot>
 </table>
