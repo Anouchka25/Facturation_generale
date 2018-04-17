@@ -61,15 +61,16 @@ if (isset($_SESSION['id_membre']) AND isset($_SESSION['pseudo']))
   <br/>
             <fieldset>
             <legend><i class="fas fa-edit" style="color:#57B223"></i>&nbsp Contenu de la facture formation</legend>
-            <?php foreach ($resFC as $req): ?>
+
             <div id="ID_container">
+              <?php foreach ($resFC as $req): ?>
             <textarea name="designation[]" rows="4"
               placeholder="Designation" required><?php echo $req['designation'] ?></textarea>
             <input type="number" placeholder="Quantité" name="quantite[]" value="<?php echo $req['quantite'] ?>" required>
             <input type="number" step="0.01" placeholder="Prix HT" name="prixht[]" value="<?php echo $req['prixht'] ?>" required>
             <input name="taxe[]" type="text" step="0.01" placeholder="Taxe en %" value="<?php echo $req['taxe'] ?>" required>
-            </div>
             <?php endforeach; ?>
+            </div>
             <br/>
             <button type="button" class="boutonAjout" onclick="ajout(this);">+ Ajouter une designation</button>
             </fieldset>
@@ -80,7 +81,7 @@ if (isset($_SESSION['id_membre']) AND isset($_SESSION['pseudo']))
       <?php
       }
       else {
-      include('seconnecter.php');
+      header('Location: seconnecter.php');
        }
        ?>
     </main>

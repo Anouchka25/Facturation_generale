@@ -69,7 +69,7 @@ if(isset($_SESSION['id_membre']) AND isset($_SESSION['pseudo'])) {
 
   echo '<i class="fas fa-user" style="color:#57B223"></i>&nbsp
   <label>Infos de votre entreprise *</label><br/>
-  <textarea id="facturede" name="facturede" rows="4" cols="45" placeholder="Votre entreprise: Raison sociale, adresse.." required>'.$resultat1['facturede'].'</textarea><br/>';
+  <textarea id="facturede" name="facturede" rows="4" cols="45" placeholder="Votre entreprise: Raison sociale, adresse, Téléphone.." required>'.$resultat1['facturede'].'</textarea><br/>';
 }
 else{
   echo '<i class="fas fa-user" style="color:#57B223"></i>&nbsp<label>Infos de votre entreprise *</label><br/><textarea id="facturede" name="facturede" rows="4" cols="45" placeholder="Votre entreprise: Raison sociale, adresse.." required></textarea><br/>';
@@ -77,8 +77,7 @@ else{
 	?>
 
     <i class="fas fa-users" style="color:#57B223"></i>&nbsp<label>Infos de votre client *</label><br/>
-    <textarea name="client" rows="4" cols="45"
-        placeholder="Facturé à: Raison sociale, adresse.." required>
+    <textarea name="client" rows="4" cols="45" placeholder="Facturé à: Raison sociale, adresse, Téléphone.." required>
     </textarea>
     <br/><br/>
 <?php

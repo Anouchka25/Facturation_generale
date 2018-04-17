@@ -1,7 +1,7 @@
 <?php
 require_once 'connexion.php';
 date_default_timezone_set('Europe/Berlin');
-
+												   
 $resFC1=$base->prepare("SELECT * FROM infosfacture WHERE id= ?");
 $resFC1->bindValue(1, $id, PDO::PARAM_INT);
 $resFC1->execute(array($_GET['id']));
@@ -17,7 +17,6 @@ $resFC->execute(array($_GET['id']));
 $resultat= $resFC->fetchAll();
 //var_dump($resultat);
  ?>
-
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -114,7 +113,7 @@ $resultat= $resFC->fetchAll();
       </table>
 
       <div id="notices">
-        <div><h2>Conditions et moyens de paiement:</h2></div>
+        <div><h2>CONDITIONS ET MOYENS DE PAIEMENT:</h2></div>
         <div class="notice"> <?php echo $uneFacture['conditions'] ?> </div>
       </div><br/>
       <?= '<center>

@@ -33,7 +33,7 @@ VALUES (:num, :numtva, :client, :datefacture, :facturede, :conditions, :id_membr
 
 $req2 = $base->prepare('INSERT INTO facturation (designation, quantite, prixht, taxe, fk_facturation_id)
 VALUES (:designation, :quantite, :prixht, :taxe, :fk_facturation_id)');
-
+				 
 
 $param = array();
 $params[':num']    = $_POST['num'];
@@ -103,11 +103,11 @@ foreach ($_POST['designation'] as $key => $designation) {
           <div class="to"><?php echo $client ?></div>
         </div>
         <div id="invoice">
-          <span>FACTURE N°:</span> <?php echo $num ?>
-          <div class="date">Date: <?php echo $datefacture ?></div>
+          <span>FACTURE N°:</span> <?php echo $num ?>&nbsp<br/>
+          <span> DATE: </span><?php echo $datefacture ?>&nbsp
+		  <br/><span> N° TVA:&nbsp </span><?php echo $numtva ?>&nbsp
         </div>
       </div>
-      <div><h2>Facture à:</h2><?php echo $numtva ?> </div>
       <?php
 //       echo '<pre>';
 // print_r($_POST['num'][$key]);

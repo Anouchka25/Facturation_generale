@@ -63,7 +63,7 @@ else{
       <th class="desc">CLIENT</th>
       <th class="qty">DATE DE FACTURE</th>
       <th class="unit">FACTURE DE</th>
-      <th class="total">CONDITIONS</th>
+      <th class="total">ACTIONS</th>
     </tr>
   </thead>
   <tbody>
@@ -72,15 +72,16 @@ else{
     ?>
     <tr>
       <td class="ggg"><?= $re['id'] ?></td>
-      <td class="no"><?= '<FONT color="white">'.$re['num'].'</FONT>
-      <br/><br/>
-      <i class="fas fa-eye" style="color:white"></i>&nbsp<em><a href="UneFacture.php?id='.$re['id'].'"><FONT color="blue">Voir</FONT></a><em>
-      <br/><br/>
-      <i class="fas fa-pencil-alt" style="color:white"></i>&nbsp<em><a href="modifierFacture.php?id='.$re['id'].'"><FONT color="blue">Modifier</FONT></a><em>' ?></td>
+      <td class="no"><?= '<FONT color="white">'.$re['num'].'</FONT>' ?></td>
+
       <td class="desc"><?= $re['client'] ?></td>
       <td class="qty"><?= $re['datefacture'] ?></td>
       <td class="unit"><?= $re['facturede'] ?></td>
-      <td class="total"><?= $re['conditions']?></td>
+      <td class="total"><?= '<i class="fas fa-eye" style="color:white"></i>&nbsp<em><a href="UneFacture.php?id='.$re['id'].'"><FONT color="white">Voir</FONT></a><em>
+      <br/><br/>
+      <i class="fas fa-pencil-alt" style="color:white"></i>&nbsp<em><a href="modifierFacture.php?id='.$re['id'].'"><FONT color="white">Modif</FONT></a><em>
+      <br/><br/>
+      <i class="fas fa-trash" style="color:white"></i>&nbsp<em><a href="deleteFacture.php?id='.$re['id'].'"><FONT color="white">Suppr</FONT></a><em>' ?></td>
     </tr>
     <?php endforeach; ?>
   </tbody>

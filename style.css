@@ -1,18 +1,21 @@
-/* @media screen and (min-width: 200px) and (max-width: 640px) {
-  input, label, textarea, fieldset{width: 100% height:20px}
+@media screen and (min-width: 200px) and (max-width: 640px) {
+  input, label, textarea, fieldset{width: 100%;}
+  input, label, textarea, fieldset, legend{font-size: 35px;}
+  input, textarea, fieldset{border:2px solid #57B223;}
+  input{height: 60px}
+  .boutonAjout, .bouton {width: 100%;}
   body {
     position: relative;
-    width: 21cm;
-    height: 26cm;
     margin: 0 auto;
     color: #0f0e0e;
     background: #FFFFFF;
     font-family: Arial, sans-serif;
-    font-size: 18px;
+    font-size: 35px;
     font-family: SourceSansPro;
   }
-  } */
-}
+  }
+  input, label, textarea, fieldset, legend{font-size: 16px;}
+  input, textarea, fieldset{border:2px solid #57B223;}
 @font-face {
   font-family: SourceSansPro;
   src: url(SourceSansPro-Regular.ttf);
@@ -40,6 +43,7 @@ body {
   font-family: Arial, sans-serif;
   font-size: 16px;
   font-family: SourceSansPro;
+  /* background-image:url(fond.jpg); */
 }
 
 header {
@@ -255,7 +259,7 @@ ul li a:hover {
         color: white;
         Font-Weight: Bold;
         border-radius:7px;
-        width:200px;
+        width:220px;
         height: 50px;}
 
 .slogan{color:#57B223; font-size: 20px;}
@@ -269,3 +273,9 @@ Font-Weight: Bold;}
 .boutonAjout:hover{background-color:#29245C;
 color: white;}
 span{font-size:14px; font-weight:bold; color:#57B223;}
+
+.supprimer {
+width:20px;
+height: 20px;
+Font-Weight: Bold;
+background-color:#57B223;}
