@@ -80,8 +80,13 @@ else{
       <td class="total"><?= '<i class="fas fa-eye" style="color:white"></i>&nbsp<em><a href="UneFacture.php?id='.$re['id'].'"><FONT color="white">Voir</FONT></a><em>
       <br/><br/>
       <i class="fas fa-pencil-alt" style="color:white"></i>&nbsp<em><a href="modifierFacture.php?id='.$re['id'].'"><FONT color="white">Modif</FONT></a><em>
-      <br/><br/>
-      <i class="fas fa-trash" style="color:white"></i>&nbsp<em><a href="deleteFacture.php?id='.$re['id'].'"><FONT color="white">Suppr</FONT></a><em>' ?></td>
+      <br/><br/>' ?>
+      <i class="fas fa-trash" style="color:white"></i>&nbsp
+      <em>
+        <a href="deleteFacture.php?id=<?= $re['id'] ?>"
+	onclick="return confirm('Voulez-vous supprimer la facture n° <?php echo $re['num']; ?>');">
+  <FONT color="white">Suppr</FONT></a>
+      <em></td>
     </tr>
     <?php endforeach; ?>
   </tbody>

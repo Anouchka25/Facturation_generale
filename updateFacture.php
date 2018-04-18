@@ -6,14 +6,15 @@
       //On vérifie si la variable existe et sinon elle vaut NULL
       $num = isset($_POST['num']) ? $_POST['num'] : NULL;
       $client = isset($_POST['client']) ? $_POST['client'] : NULL;
-      $designation = isset($_POST['designation']) ? $_POST['designation'] : NULL;
-      $quantite = isset($_POST['quantite']) ? $_POST['quantite'] : NULL;
-      $prixht = isset($_POST['prixht']) ? $_POST['prixht'] : NULL;
       $datefacture = isset($_POST['datefacture']) ? $_POST['datefacture'] : NULL;
       $facturede = isset($_POST['facturede']) ? $_POST['facturede'] : NULL;
       $conditions = isset($_POST['conditions']) ? $_POST['conditions'] : NULL;
-      $numtva = isset($_POST['numtva']) ? $_POST['numtva'] : NULL;
       $id_membre= $_SESSION['id_membre'];
+
+      $designation = isset($_POST['designation']) ? $_POST['designation'] : NULL;
+      $quantite = isset($_POST['quantite']) ? $_POST['quantite'] : NULL;
+      $prixht = isset($_POST['prixht']) ? $_POST['prixht'] : NULL;
+      $numtva = isset($_POST['numtva']) ? $_POST['numtva'] : NULL;
 
 
       $req1 = $base->prepare('UPDATE infosfacture
