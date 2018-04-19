@@ -114,7 +114,7 @@ $resultat= $resFC->fetchAll();
 
       <div id="notices">
         <div><h2>CONDITIONS ET MOYENS DE PAIEMENT:</h2></div>
-        <div class="notice"> <?php echo $uneFacture['conditions'] ?> </div>
+        <div class="notice"> <?php echo str_replace("<br>", "\n", $uneFacture['conditions']); ?> </div>
       </div><br/>
       <?= '<center>
       <a href=" imprimerpdf.php?num='.$uneFacture['num'].'" target="_blank">

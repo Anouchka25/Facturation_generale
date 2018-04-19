@@ -77,15 +77,15 @@ else{
       <td class="desc"><?= $re['client'] ?></td>
       <td class="qty"><?= $re['datefacture'] ?></td>
       <td class="unit"><?= $re['facturede'] ?></td>
-      <td class="total"><?= '<i class="fas fa-eye" style="color:white"></i>&nbsp<em><a href="UneFacture.php?id='.$re['id'].'"><FONT color="white">Voir</FONT></a><em>
+      <td class="total"><?= '<i class="fas fa-eye" style="color:white"></i>&nbsp<em><a href="UneFacture.php?id='.$re['id'].'" title="Voir tout le contenu et imprimer cette facture"><FONT color="white">Voir</FONT></a><em>
       <br/><br/>
-      <i class="fas fa-pencil-alt" style="color:white"></i>&nbsp<em><a href="modifierFacture.php?id='.$re['id'].'"><FONT color="white">Modif</FONT></a><em>
+      <i class="fas fa-clone" style="color:white"></i>&nbsp<em><a href="dupliquerFacture.php?id='.$re['id'].'" title="Cloner/Dupliquer cette facture"><FONT color="white">Cloner</FONT></a><em>
       <br/><br/>' ?>
       <i class="fas fa-trash" style="color:white"></i>&nbsp
       <em>
-        <a href="deleteFacture.php?id=<?= $re['id'] ?>"
+        <a href="deleteFacture.php?id=<?= $re['id'] ?>" title="Supprimer cette facture"
 	onclick="return confirm('Voulez-vous supprimer la facture n° <?php echo $re['num']; ?>');">
-  <FONT color="white">Suppr</FONT></a>
+  <FONT color="white">suppr</FONT></a>
       <em></td>
     </tr>
     <?php endforeach; ?>

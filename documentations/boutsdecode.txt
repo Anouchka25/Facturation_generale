@@ -1,0 +1,3 @@
+Pour ajouter le lien de modification de la facture:
+<i class="fas fa-pencil-alt" style="color:white"></i>&nbsp<em><a href="modifierFacture.php?id='.$re['id'].'"><FONT color="white">Modif</FONT></a><em>
+<br/><br/>
