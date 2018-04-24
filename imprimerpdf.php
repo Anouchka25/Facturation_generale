@@ -56,12 +56,12 @@ $datelafacture= date('d/m/Y',strtotime($resultat1['datefacture']));
             </tr>
 
             <tr>
-                <td class="text-left"><span>De</span><br/><br/>'.$resultat1['facturede'].'<br></td>
-				<td class="text-right"><span>N° de facture:</span> '.$resultat1['num'].'<br/><br/><span>Date: </span>'.$datelafacture.'<br/><br/><span>N° TVA:</span> '.$resultat1['numtva'].'</td>
+                <td class="text-left"><span>DE</span><br/><br/>'.nl2br($resultat1['facturede']).'<br></td>
+				<td class="text-right"><span>FACTURE N°:</span> '.$resultat1['num'].'<br/><br/><span>DATE: </span>'.$datelafacture.'<br/><br/><span>N° TVA:</span> '.$resultat1['numtva'].'</td>
             </tr>
 
 			<tr>
-                <td class="text-left"><br/><br/><br/><span>FACTURÉ À</span><br/><br/>'.$resultat1['client'].'<br></td>
+                <td class="text-left"><br/><br/><br/><br/><br/><span>FACTURÉ À</span><br/><br/>'.nl2br($resultat1['client']).'<br></td>
                 <td class="text-right"></td>
             </tr>
         </table>
@@ -70,7 +70,6 @@ $datelafacture= date('d/m/Y',strtotime($resultat1['datefacture']));
 //}
 
 $str .= '
-    <br/><br/>
     <table class="content">
     <thead>
     <tr class="ligne1Content">
@@ -134,7 +133,7 @@ $str .= '
         </tr>
 
         <tr>
-        <td colspan="5"><h3>Conditions et moyens de paiement:</h3><br/>'.$resultat1['conditions'].'</td>
+        <td colspan="5"><span>CONDITIONS ET MOYENS DE PAIEMENT:</span><br/>'.nl2br($resultat1['conditions']).'</td>
         </tr>
     </tfoot>
     </table>

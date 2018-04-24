@@ -3,5 +3,6 @@
 <br/><br/>
   <a href="index.php">Créer une facture</a>  &nbsp &nbsp
   &nbsp &nbsp <a href="listeFactures.php">Liste des factures</a>
+  <!-- &nbsp &nbsp <a href="FacturesXML.php">Liste des factures en XML</a> -->
   &nbsp &nbsp <a href="contact.php">Contact</a>
 </footer>

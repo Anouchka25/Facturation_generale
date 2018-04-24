@@ -42,14 +42,14 @@ $resultat= $resFC->fetchAll();
       </a>
       </div>
       <div id="company">
-      <div class="to"> <?php echo $uneFacture1['facturede'] ?></div>
+      <div class="to"> <?php echo nl2br($uneFacture1['facturede']) ?></div>
       </div>
 
     </header>
     <main>
       <div id="details" class="clearfix">
         <div id="client">
-          <div class="to"><?= $uneFacture1['client'] ?></div>&nbsp
+          <div class="to"><?= nl2br($uneFacture1['client']) ?></div>&nbsp
         </div>
         <div id="invoice">
           <span>FACTURE N°:</span>  <?= $uneFacture1['num'] ?>&nbsp<br/>
@@ -114,7 +114,7 @@ $resultat= $resFC->fetchAll();
 
       <div id="notices">
         <div><h2>CONDITIONS ET MOYENS DE PAIEMENT:</h2></div>
-        <div class="notice"> <?php echo str_replace("<br>", "\n", $uneFacture['conditions']); ?> </div>
+        <div class="notice"> <?php echo nl2br($uneFacture['conditions']) ?> </div>
       </div><br/>
       <?= '<center>
       <a href=" imprimerpdf.php?num='.$uneFacture['num'].'" target="_blank">
