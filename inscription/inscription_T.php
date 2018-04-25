@@ -46,7 +46,7 @@ require_once 'connexion.php';
                 <title>Accus&eacute; r&eacute;ception de votre demande</title>
                 </head>
                 <body>';
-				$message .= 'Bonjour Monsieur/Madame!<br/>';// Contenu du message
+				$message .= '<h3>Bonjour Monsieur/Madame!</h3>';// Contenu du message
         $message .='E-mail : ' . $email . ' <br/>';
         $message .='Pseudo : ' . $pseudo . ' <br/>';
         $message .='Mot de passe : ' . $password . ' <br/>';
@@ -56,7 +56,7 @@ require_once 'connexion.php';
 				$message .= "</body></html>";
 
         $to      = $email ;
-        $subject = 'Inscription facturation';
+        $subject = 'Nouvel inscrit facturation';
         $headers = 'From: contact@allkers.com' . "\r\n" .
      'Reply-To: contact@allkers.com' . "\r\n" .
      'X-Mailer: PHP/' . phpversion();

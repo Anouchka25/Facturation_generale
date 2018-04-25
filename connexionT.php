@@ -13,7 +13,12 @@ if(!empty($_POST['pseudo']) && !empty($_POST['password'])) {
     $_SESSION['pseudo'] = $pseudo;
     header('Location: listefactures.php');
 
-  }else {echo 'Mauvais identifiant ou mot de passe ! <a href="seconnecter.php">Réessayez !</a> ou <a href="inscription.php">Inscrivez-vous !</a>';
-
+  }else { ?>
+    <script type="text/javascript">
+         alert("Mauvais pseudo ou mot de passe, Réessayez ?");
+         document.location.href = 'seconnecter.php';
+    </script>
+    <?
   }
 }
+?>
