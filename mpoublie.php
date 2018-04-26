@@ -17,22 +17,9 @@
     </header>
     <main>
 <center>
-<form action="passwordT.php" method="post">
-  <?
-  require_once 'connexion.php';
-  if(isset($_SESSION['id_membre']) AND isset($_SESSION['pseudo'])) {
-
-    // $req=$base->prepare("SELECT * FROM membres WHERE id= ? AND pseudo= ?");
-    // $req->bindValue(1, $id, PDO::PARAM_INT);
-    // $req->bindValue(2, $pseudo, PDO::PARAM_STR);
-    // $req->execute(array($_GET['id_membre'], $_GET['pseudo']));
-    ?>
-  <!-- <label>Pseudo *</label><br/>
-  <input type="text" name="pseudo" ><br/><br/> -->
-  <label>Nouveau mot de passe *</label><br/>
-  <input type="text" name="password1" ><br/><br/>
-  <label>Confirmez votre nouveau mot de passe *</label><br/>
-  <input type="text" name="password2" ><br/><br/>
+<form action="mpoublieT.php" method="post">
+  <label>E-mail *</label><br/>
+  <input type="email" name="email" ><br/><br/>
 <center><input type="submit" value ="Valider" class="bouton" /></center>
 </form>
 </center>

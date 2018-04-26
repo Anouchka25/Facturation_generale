@@ -29,7 +29,7 @@
 
        <input type="submit" name="connexion" value="Se connecter" class="bouton" />
        &nbsp&nbsp&nbsp<a href="inscription.php"> Inscription </a>
-       &nbsp&nbsp&nbsp<a href="password.php"> Mot de passe oublié ? </a>
+       &nbsp&nbsp&nbsp<a href="mpoublie.php"> Mot de passe oublié ? </a>
        </form>
 
     </fieldset>

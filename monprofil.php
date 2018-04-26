@@ -36,10 +36,10 @@ $result = $req->fetch(PDO::FETCH_ASSOC);
 //$pass_hache = password_hash($result['password'], PASSWORD_DEFAULT);
 ?>
 <center>
-Email: <?= $result['Email'] ?><br/>
+Email: <?= $result['email'] ?><br/>
 Pseudo: <?= $result['pseudo'] ?><br/>
 Mot de passe: **********<br/>
-<a href="password.php">Renouveler le mot de passe</a>
+<!-- <a href="password.php">Renouveler le mot de passe</a> -->
 </center>
 </main>
     <footer>
