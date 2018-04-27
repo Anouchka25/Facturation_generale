@@ -72,7 +72,7 @@ if(isset($_SESSION['id_membre']) AND isset($_SESSION['pseudo'])) {
   <textarea id="facturede" name="facturede" rows="4" cols="45" placeholder="Votre entreprise: Raison sociale, adresse, Téléphone.." required>'.$resultat1['facturede'].'</textarea><br/>';
 }
 else{
-  echo '<i class="fas fa-user" style="color:#57B223"></i>&nbsp<label>Infos de votre entreprise *</label><br/><textarea id="facturede" name="facturede" rows="4" cols="45" placeholder="Votre entreprise: Raison sociale, adresse.." required></textarea><br/>';
+  echo '<i class="fas fa-user" style="color:#57B223"></i>&nbsp<label>Infos de votre entreprise *</label><br/><textarea id="facturede" name="facturede" rows="4" cols="45" placeholder="Votre entreprise: Raison sociale, adresse.." required></textarea><br/><br/>';
 }
 	?>
 
@@ -121,9 +121,9 @@ else{
             <br/><br/>
     <center><input type="submit" value ="Créer une facture" class="bouton" /></center>
       </form>
-      <br/>
-    </main>
+      <br/><br/><br/>
       <?php require_once('includes/footer.php') ?>
+    </main>
 
 <script src="js/fonctions.js"></script>
 

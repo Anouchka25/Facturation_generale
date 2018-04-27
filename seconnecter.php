@@ -31,9 +31,8 @@
        &nbsp&nbsp&nbsp<a href="inscription.php"> Inscription </a>
        &nbsp&nbsp&nbsp<a href="mpoublie.php"> Mot de passe oublié ? </a>
        </form>
-
     </fieldset>
-    <br/>
+    <br/><br/><br/>
   </main>
     <?php require_once('includes/footer.php') ?>
   </body>

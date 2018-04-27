@@ -49,9 +49,8 @@ else {
   echo '<a href="inscription.php">Vous n\'êtes pas inscrit, Veuillez vous inscrire !</a>';
 }
   ?>
-</main>
-    <footer>
+<br/><br/><br/>
       <?php require_once('includes/footer.php') ?>
-    </footer>
+</main>
   </body>
 </html>

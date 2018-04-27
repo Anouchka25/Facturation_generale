@@ -32,15 +32,14 @@
 <a href="listeFactures.php">Liste de mes factures</a><br/><br/><br/>
 <a href="monprofil.php">Mon profil</a>
 </center>
-    </main>
-    <footer>
-      <?php require_once('includes/footer.php') ?>
-    </footer>
-    <?php
-    }
-    else {
-    include('seconnecter.php');
-     }
-     ?>
-  </body>
+<br/><br/><br/>
+<?php require_once('includes/footer.php') ?>
+</main>
+<?php
+}
+else {
+include('seconnecter.php');
+ }
+ ?>
+</body>
 </html>

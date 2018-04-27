@@ -32,8 +32,8 @@
       </form>
 
     </fieldset>
-      <br/>
-    </main>
+      <br/><br/><br/>
       <?php require_once('includes/footer.php') ?>
+    </main>
   </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
 require_once 'connexion.php';
 date_default_timezone_set('Europe/Berlin');
-												   
+
 $resFC1=$base->prepare("SELECT * FROM infosfacture WHERE id= ?");
 $resFC1->bindValue(1, $id, PDO::PARAM_INT);
 $resFC1->execute(array($_GET['id']));
@@ -124,8 +124,8 @@ $resultat= $resFC->fetchAll();
       </figure>
       </a>
       </center>' ?>
-      <br/>
+			<br/><br/><br/>
+			<?php require_once('includes/footer.php') ?>
     </main>
-    <?php require_once('includes/footer.php') ?>
   </body>
 </html>

@@ -102,10 +102,9 @@ else{
  echo '<a href="listeFactures.php?page='.$i.'">'.$i.'---</a>';
  }
  ?>
+ <br/><br/><br/><br/><br/>
+ <?php require_once('includes/footer.php') ?>
     </main>
-    <footer>
-      <?php require_once('includes/footer.php') ?>
-    </footer>
     <?php
     }
     else {

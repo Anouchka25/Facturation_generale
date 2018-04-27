@@ -23,9 +23,8 @@
 <center><input type="submit" value ="Valider" class="bouton" /></center>
 </form>
 </center>
+<br/><br/><br/>
+<?php require_once('includes/footer.php') ?>
 </main>
-    <footer>
-      <?php require_once('includes/footer.php') ?>
-    </footer>
   </body>
 </html>
